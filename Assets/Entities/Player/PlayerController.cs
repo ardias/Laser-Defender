@@ -52,26 +52,24 @@ public class PlayerController : MonoBehaviour {
 		{
 			//shoudl extract to it's own class
 			GameObject bullet = (GameObject)Instantiate(Projectile, transform.position, Quaternion.identity);
-			bullets.Add(bullet);
-		}
-
-		MoveBullets(bullets);
-	}
-
-	private void MoveBullets(ArrayList bullets)
-	{
-		IEnumerator bs = bullets.GetEnumerator();
-		while(bs.MoveNext())
-		{
-			GameObject bullet = bs.Current as GameObject;
-			bullet.transform.position += Vector3.up * bulletRealSpeed;
-			if (bullet.transform.position.y > ymax)
-			{
-				Destroy(bullet);
-				bullets.Remove(bullet);
-			}
+			bullet.GetComponent<Rigidbody2D>().velocity = Vector2.up * BulletSpeed;
 		}
 	}
+
+	//private void MoveBullets(ArrayList bullets)
+	//{
+	//	IEnumerator bs = bullets.GetEnumerator();
+	//	while(bs.MoveNext())
+	//	{
+	//		GameObject bullet = bs.Current as GameObject;
+	//		bullet.transform.position += Vector3.up * bulletRealSpeed;
+	//		if (bullet.transform.position.y > ymax)
+	//		{
+	//			Destroy(bullet);
+	//			bullets.Remove(bullet);
+	//		}
+	//	}
+	//}
 
 	private void MoveLeft(float speed)
 	{
