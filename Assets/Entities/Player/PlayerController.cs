@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject Projectile;
 	public float ShipSpeed = 10;
 	public float BulletSpeed = 10;
+	public float FiringRate = 0.1f;
 
 	float shipRealSpeed;
 	float bulletRealSpeed;
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour {
 	float padding = 0.5f;
 
 	ArrayList bullets;
+	
+
 	// Use this for initialization
 	void Start () {
 
@@ -50,26 +53,20 @@ public class PlayerController : MonoBehaviour {
 
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			//shoudl extract to it's own class
-			GameObject bullet = (GameObject)Instantiate(Projectile, transform.position, Quaternion.identity);
-			bullet.GetComponent<Rigidbody2D>().velocity = Vector2.up * BulletSpeed;
+			InvokeRepeating("Fire", 0.000001f, FiringRate);
+		}
+		if(Input.GetKeyUp(KeyCode.Space))
+		{
+			CancelInvoke("Fire");
 		}
 	}
 
-	//private void MoveBullets(ArrayList bullets)
-	//{
-	//	IEnumerator bs = bullets.GetEnumerator();
-	//	while(bs.MoveNext())
-	//	{
-	//		GameObject bullet = bs.Current as GameObject;
-	//		bullet.transform.position += Vector3.up * bulletRealSpeed;
-	//		if (bullet.transform.position.y > ymax)
-	//		{
-	//			Destroy(bullet);
-	//			bullets.Remove(bullet);
-	//		}
-	//	}
-	//}
+	private void Fire()
+	{
+		//shoudl extract to it's own class
+		GameObject bullet = (GameObject)Instantiate(Projectile, transform.position, Quaternion.identity);
+		bullet.GetComponent<Rigidbody2D>().velocity = Vector2.up * BulletSpeed;
+	}
 
 	private void MoveLeft(float speed)
 	{
