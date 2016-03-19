@@ -66,6 +66,7 @@
     <Compile Include="Assets\Entities\Enemies\EnemySpawner.cs" />
     <Compile Include="Assets\Entities\EnemyFormation\PositionGizmo.cs" />
     <Compile Include="Assets\Entities\Player\PlayerController.cs" />
+    <Compile Include="Assets\Entities\Player\Projectile.cs" />
     <Compile Include="Assets\Scripts\BulletShredder.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\MusicPlayer.cs" />
