@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Entities\Enemies\Enemy.cs" />
-    <Compile Include="Assets\Entities\Enemies\EnemySpawner.cs" />
+    <Compile Include="Assets\Entities\EnemyFormation\EnemySpawner.cs" />
     <Compile Include="Assets\Entities\EnemyFormation\PositionGizmo.cs" />
     <Compile Include="Assets\Entities\Player\PlayerController.cs" />
     <Compile Include="Assets\Entities\Player\Projectile.cs" />

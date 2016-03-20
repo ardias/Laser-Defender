@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
 	public float PlayerSpeed = 1f;
 	public float ProjectileSpeed = 1f;
 	public float ProjectileRate = 1f;
+	public int Health;
 
 	float shipSpeed;
 	float laserSpeed;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 	float xmax = 0;
 	//float ymax = 0;
 	float padding = 0.5f;
+	
 
 	// Use this for initialization
 	void Start () {
@@ -75,5 +77,19 @@ public class PlayerController : MonoBehaviour {
 		float rightIncrement = Vector3.right.x * speed;
 		float left = Mathf.Clamp(transform.position.x + rightIncrement, xmin, xmax);
 		this.transform.position = new Vector3(left, transform.position.y, transform.position.z);
+	}
+
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		Projectile missile = collider.gameObject.GetComponent<Projectile>(); 
+		if(missile)
+		{
+			Health -= missile.Damage;
+			if (Health == 0)
+			{
+				Destroy(gameObject);
+			}
+		}
+		
 	}
 }
